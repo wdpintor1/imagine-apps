@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .models import TipoUsuario
-from .models import Paquete
+from .models import Paquete, Cliente
+from django_select2.forms import ModelSelect2Widget
 
 class CustomUserCreationForm(UserCreationForm):
     
@@ -27,6 +28,15 @@ class CustomUserCreationForm(UserCreationForm):
         )
         
 class PaqueteForm(forms.ModelForm):
+    cliente = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(),
+        widget=ModelSelect2Widget(
+            model=Cliente,
+            search_fields=['nombre__icontains'],
+            attrs={'style': 'width: 100%;'}
+        )
+    )
+
     class Meta:
         model = Paquete
-        fields = ['peso', 'dimensiones', 'direccion_origen', 'direccion_destino']
+        fields = ['cliente','peso', 'dimensiones', 'direccion_origen', 'direccion_destino']

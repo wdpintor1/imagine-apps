@@ -22,4 +22,7 @@ urlpatterns = [
     path('', views.home,name='home'),
     path('admin/', admin.site.urls),
     path('', include('logistics.urls')),
+    path('select2/', include('django_select2.urls')),
+    path('asignar_paquete_transportista/', views.asignar_paquete_transportista, name='asignar_paquete_transportista'),
+    
 ]

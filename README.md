@@ -5,6 +5,13 @@ Autor: Wdpinto
 Fecha: 17/12/2024
 Descripción: En este archivo se encuentran todas las instrucciones necesarias para poder ejecutar el proyecto construido para la prueba técnica como desarrollador Django en la compañia Imagine apps.
 #################################################################################################################################################################
+Versiones de las dependencias usadas
+git version 2.43.0.windows.1
+Python 3.12.2
+pip pip 24.0
+Django 5.0.2
+djangorestframework-3.14.0
+#################################################################################################################################################################
 Instrucciones:
 Instalación de Python, PIP y Django
 
@@ -44,9 +51,11 @@ Inicialización del repositorio en GIT:
 1. Crear una carpeta en el directorio en el que queremos que este ubicado nuestro proyecto por ejemplo C:\Users\PC\Desktop
 2. Luego de crearla abrir un cmd o la terminal de preferencia que queramos manejar
 3. ingresar a la ubicación de la carpeta que creamos a través del siguiente comando:
-   Si la carpeta creada se llama por ejemplo imagine-apps
-   
+   Si la carpeta creada se llama por ejemplo imagine-apps   
    cd C:\Users\PC\Desktop\imagine-apps\
 4. Una vez nos encontramos dentro de la carpeta creada ejecutar el comando para la inicialización del respositorio en Git:
    git init
-5. Clonar el repositorio
+5. Clonar el repositorio del proyecto con el siguiente comando:
+git clone https://github.com/wdpintor1/imagine-apps.git
+6. Una vez clonado podemos poner a correr la aplicación con el siguiente comando:
+
