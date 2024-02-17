@@ -33,7 +33,7 @@ def crear_actualizar_paquete(request, idPaquete=None):
             # Antes de guardar el formulario, establece el estado de entrega como 'pendiente' si no se proporcionó
             if not paquete:
                 paquete = form.save(commit=False)  # Guarda el formulario pero no lo añade a la base de datos todavía
-                paquete.estado_entrega = 'pendiente'
+                paquete.estado_entrega = 'Enviado'
                 paquete.save()  # Ahora guarda el paquete con el estado de entrega establecido
             else:
                 form.save()
@@ -41,7 +41,7 @@ def crear_actualizar_paquete(request, idPaquete=None):
             return redirect('/paquetes/')  # Redirige a la página principal después de guardar el paquete
     else:
         # Si no es una solicitud POST, inicializa el formulario con el paquete (si existe) y establece el estado de entrega predeterminado si se crea un nuevo paquete
-        initial_data = {'estado_entrega': 'pendiente'} if not paquete else None
+        initial_data = {'estado_entrega': 'Enviado'} if not paquete else None
         form = PaqueteForm(instance=paquete, initial=initial_data)
 
     return render(request, 'crear_actualizar_paquete.html', {'form': form})
