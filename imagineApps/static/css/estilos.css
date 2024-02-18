@@ -1,9 +1,17 @@
-
+@import url('botones.css');
+@import url('messagges.css');
 :root {
     --color-primario: #ff923e;
     --color-secundario: black;
     --color-terciario: white;
-  }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
 .divFondo {
     background-image: url('/static/img/fondoCeldas.jpg');
     background-size: cover;
@@ -26,120 +34,11 @@
     transition: 2s;
     width: 100%;
 }
-.formContainer{
-    padding-top: 40px;
-}
-.centerPanel p{
-    display: block;
-    color:#ffc107;
-}
-.centerPanel p input{
-    text-align: center;
-}
-.centerPanel button{
-    display: inline-block;
-   /* Permite establecer márgenes automáticos */
-    margin: auto;
-}
-.tituloPagina{
-    color:var(--color-primario);
-    font-size: larger;
-    padding-bottom: 10px;
-}
-.error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-.message-container{
-    animation: fadeInAndOut 3s forwards;
-    position: fixed;
-    margin:0! important;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1000;
-}
-.message-container.show {
-    opacity: 1;
-}
-/* Animación de entrada y salida */
-@keyframes fadeInAndOut {
-    0% {
-        opacity: 0;
-   }
-    10%, 90% {
-        opacity: 1;
-   }
-    100% {
-        opacity: 0;
-   }
-}
-.message-container.animated {
-    animation: fadeIn 0.5s ease-in-out;
-}
-.message-generico {
-    color: #721c24; /* Color del texto */
-    background-color: #f8d7da; /* Color de fondo */
-    border: 1px solid #f5c6cb; /* Borde */
-    padding: 10px; /* Espaciado interno */
-    margin-bottom: 10px; /* Margen inferior */
-}
-.footer {
-    background-color: #343a40;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-}
-
-.footer {
-    background-color: #343a40;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.register-form label{
-    color:var(--color-primario)
-}
 .nav-item{
     margin-right: 20px;
 }
 .list-group{    
     width: 10%;
-}
-/* Estilo para el botón de configuración */
-.btn-configuracion-canal {
-    background-color: #17a2b8!important;
-    color: #fff!important;
-    border: 1px solid #17a2b8;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-}
-/* Estilo para el botón de configuración al pasar el ratón */
-.btn-configuracion-canal:hover {
-    color: #fff;
-    background-color: #166f7d!important;
-    border-color: #138496;
 }
 
 /*Estilos para la paginación*/
@@ -168,4 +67,13 @@ body {
     color: white;
     padding: 8px 16px;
     border: 1px solid #ddd;
+}
+/* Estilos personalizados para el elemento select */
+#selectUsuario {
+    text-align: center;
+    border-radius: 15px;
+    border-width:2px;
+    width: 200px; /* Ancho personalizado */
+    height: 40px; /* Altura personalizada */
+    font-size: 16px; /* Tamaño de fuente personalizado */
 }

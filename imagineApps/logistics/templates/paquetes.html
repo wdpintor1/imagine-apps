@@ -18,7 +18,7 @@
                                         <a href="{% url 'actualizar_paquete' paquete.idPaquete %}" class="btn-configuracion-canal btn float-right">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                        <button type="button" class="btn btn-danger float-right mr-2 eliminar-btn" data-url="{% url 'eliminar_paquete' id_paquete=paquete.idPaquete %}">
+                                        <button type="button" class="btn btn-danger float-right mr-2 eliminar-btn" onClick="abrir_modal_eliminacion('{% url 'modal_eliminar' paquete.idPaquete %}')">
                                             <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>
                                         <h5 class="card-title mb-1"><strong>{{ paquete.nombre }}</strong></h5>
@@ -81,12 +81,16 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('.eliminar-btn').click(function() {
-            var url = $(this).data('url');
-            window.location.href = url;
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" role="dialog">
+   
+</div>
+<script type="text/javascript">
+    function abrir_modal_eliminacion(url){
+        $('#confirmDeleteModal').load(url,function(){
+            $(this).modal('show');
         });
-    });
+    }    
 </script>
 {% endblock content %}

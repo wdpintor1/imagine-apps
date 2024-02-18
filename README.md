@@ -5,13 +5,26 @@ Autor: Wdpinto
 Fecha: 17/12/2024
 Descripción: En este archivo se encuentran todas las instrucciones necesarias para poder ejecutar el proyecto construido para la prueba técnica como desarrollador Django en la compañia Imagine apps.
 #################################################################################################################################################################
+
 Versiones de las dependencias usadas
 git version 2.43.0.windows.1
 Python 3.12.2
 pip pip 24.0
 Django 5.0.2
-djangorestframework-3.14.0
+
 #################################################################################################################################################################
+
+Estructura del proyecto
+
+Static: En la carpeta static se encuentran los archivos de estilo y las imagenes que son necesarias para las interfaces visuales
+Logistics: Tiene todos los archivos necesarios para que la aplicación de gestión de paquetes funcione
+logistics/paquetes:tiene las views, url y forms especificos para el componente de paquetes y las operaciones CRUD.
+logistics/templates: Tiene todas las templates que se muestran en la aplicación
+logistics/views: tiene las views generales para mostrar los listados de paquetes por transportistas y por clientes
+logistics/models: Tiene los modelos de la base de datos, al no se tantas tablas no hubo necesidad de dividir el archivo por componentes.
+
+#################################################################################################################################################################
+
 Instrucciones:
 Instalación de Python, PIP y Django
 
@@ -57,5 +70,7 @@ Inicialización del repositorio en GIT:
    git init
 5. Clonar el repositorio del proyecto con el siguiente comando:
 git clone https://github.com/wdpintor1/imagine-apps.git
-6. Una vez clonado podemos poner a correr la aplicación con el siguiente comando:
+6. Una vez clonado debemos ingresar al directorio del proyecto y luego correrlo con el siguiente comando:
+python manage.py runserver
+
 

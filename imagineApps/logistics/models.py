@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 
@@ -15,6 +14,8 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nombre
+    def __int__(self):
+        return self.idCliente
 
 class Transportista(models.Model):
     idTransportista = models.AutoField(primary_key=True)
@@ -38,7 +39,7 @@ class Paquete(models.Model):
     direccion_destino = models.CharField(max_length=255)
     estado_entrega = models.CharField(max_length=20)
     idCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    idTransportista = models.ForeignKey(Transportista, on_delete=models.CASCADE)
+    idTransportista = models.ForeignKey(Transportista, on_delete=models.CASCADE,null=True)
     # Establece manualmente el valor predeterminado para fecha_creacion
     fecha_creacion = models.DateTimeField(default=timezone.now, blank=True)    
     # Usa auto_now para fecha_actualizacion

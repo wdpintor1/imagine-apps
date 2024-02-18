@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Paquete, Transportista, Cliente
 import json
 from django.views.decorators.csrf import csrf_exempt
-from django.db.models import F
-
+from django.core.paginator import Paginator, EmptyPage
 def home(request):    
     return render(request, 'home.html')
 
@@ -44,11 +43,19 @@ def listar_paquete(request):
 
 def obtener_paquetes(request,id_usuario=None):
     operacion = request.GET.get('operacion')
-    print(operacion)
     if(operacion=="transportista"):
         usuarios = Transportista.objects.all()
+        paquetes=Paquete.objects.filter(idTransportista=id_usuario);
     else:
         usuarios = Cliente.objects.all()
-    print(usuarios)
-    paquetes=Paquete.objects.filter(idTransportista=id_usuario); 
+        paquetes=Paquete.objects.filter(idCliente=id_usuario);  
+    
+    # Configura la paginación
+    page = request.GET.get('page', 1)
+    paginator = Paginator(paquetes, 4)  # Muestra 5 canales por página   
+    try:
+        paquetes = paginator.page(page)
+    except EmptyPage:
+        paquetes = paginator.page(paginator.num_pages)
+        
     return render(request,'listar_paquetes.html',{'usuario_seleccionado_id':id_usuario,'paquetes':paquetes,'usuarios':usuarios,'operacion':operacion})
