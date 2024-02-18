@@ -1,0 +1,40 @@
+
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+/* Estilo para mensajes de éxito */
+.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.message-container{
+    animation: fadeInAndOut 3s forwards;
+    position: absolute;
+    margin:0! important;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+.message-container.show {
+    opacity: 1;
+}
+/* Animación de entrada y salida */
+@keyframes fadeInAndOut {
+    0% {
+        opacity: 0;
+   }
+    10%, 90% {
+        opacity: 1;
+   }
+    100% {
+        opacity: 0;
+   }
+}
+.message-container.animated {
+    animation: fadeIn 0.5s ease-in-out;
+}

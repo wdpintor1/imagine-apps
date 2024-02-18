@@ -1,0 +1,79 @@
+@import url('botones.css');
+@import url('messagges.css');
+:root {
+    --color-primario: #ff923e;
+    --color-secundario: black;
+    --color-terciario: white;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.divFondo {
+    background-image: url('/static/img/fondoCeldas.jpg');
+    background-size: cover;
+   /* Ajustar la imagen para cubrir todo el fondo */
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: 87vh;
+   /* O ajusta la altura según tus necesidades */
+    vertical-align: center;
+}
+.centerPanel{
+    overflow: scroll;
+    background-color: #343a40;
+    padding: 20px;
+    justify-content: center;
+   /* Centra horizontalmente */
+    align-items: center;
+    text-align: center;
+    transition: 2s;
+    width: 100%;
+}
+.nav-item{
+    margin-right: 20px;
+}
+.list-group{    
+    width: 10%;
+}
+
+/*Estilos para la paginación*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    background-color:#343a40;
+    color: #FFF;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: var(--color-primario);
+    color: #343a40;
+}
+
+.pagination .current {
+    background-color: #343a40;
+    color: white;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+}
+/* Estilos personalizados para el elemento select */
+#selectUsuario {
+    text-align: center;
+    border-radius: 15px;
+    border-width:2px;
+    width: 200px; /* Ancho personalizado */
+    height: 40px; /* Altura personalizada */
+    font-size: 16px; /* Tamaño de fuente personalizado */
+}

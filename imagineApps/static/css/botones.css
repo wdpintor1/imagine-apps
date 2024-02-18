@@ -1,0 +1,16 @@
+/* Estilo para el botón de configuración */
+.btn-configuracion-canal {
+    background-color: #17a2b8!important;
+    color: #fff!important;
+    border: 1px solid #17a2b8;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+/* Estilo para el botón de configuración al pasar el ratón */
+.btn-configuracion-canal:hover {
+    color: #fff;
+    background-color: #166f7d!important;
+    border-color: #138496;
+}

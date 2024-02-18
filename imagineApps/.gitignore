@@ -1,0 +1,13 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+# Ignorar la base de datos SQLite3
+db.sqlite3
+
+# Ignorar los archivos .pyc en los directorios __pycache__
+imagineApps/__pycache__/
+logistics/__pycache__/

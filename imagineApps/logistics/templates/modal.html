@@ -1,0 +1,18 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar este registro?
+      </div>
+      <div class="modal-footer">
+        <!-- Formulario para enviar la solicitud de eliminación -->
+        <form id="deleteForm" method="post" action="{% url 'eliminar_paquete' id_paquete=id_paquete %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
