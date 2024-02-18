@@ -1,15 +1,26 @@
 @import url('botones.css');
 @import url('messagges.css');
+
 :root {
     --color-primario: #ff923e;
     --color-secundario: black;
     --color-terciario: white;
 }
-
+@media only screen and (min-height: 650px) {
+    /* Aplicar zoom para resoluciones menores a 668 */
+    body {
+        zoom: 2.5; /* Ajusta el valor del zoom según sea necesario */
+    }
+}
+.container-row{
+    min-width: 100%!important;
+}
+.card-container{
+    min-width: 100%!important;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden;
 }
 
 .divFondo {

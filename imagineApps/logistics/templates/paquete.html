@@ -1,0 +1,38 @@
+{% block paquete%}
+<div class="col-lg-5 text-center">
+    <div class="card">
+        <div class="card-body">
+            {% if not operacion %}
+            <div class="btn-group" role="group">
+                <a href="{% url 'actualizar_paquete' paquete.idPaquete %}" class="btn-configuracion-canal btn btn-sm btn-primary mr-2">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <button type="button" class="btn btn-sm btn-danger eliminar-btn" onClick="abrir_modal_eliminacion('{% url 'modal_eliminar' paquete.idPaquete %}')">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </button>
+            </div>
+            {% endif %}
+            <h5 class="card-title mb-1"><strong>{{ paquete.nombre }}</strong></h5>
+            <p class="card-text mb-1"><strong><i class="fas fa-map-marker-alt"></i> Dirección Origen: </strong>{{ paquete.direccion_origen }}</p>
+            <p class="card-text mb-1"><strong><i class="fas fa-map-marker-alt"></i> Dirección Destino:</strong> {{ paquete.direccion_destino }}</p>
+            <p class="card-text mb-1"><strong><i class="fas fa-ruler"></i> Dimensiones:</strong> {{ paquete.dimensiones }}</p>
+            <p class="card-text mb-1"><strong><i class="fas fa-weight"></i> Peso:</strong> {{ paquete.peso }}</p>
+            <div>
+                <small class="text-muted">Creado: {{ paquete.fecha_creacion|date:"Y-m-d" }} - </small>
+                <small class="text-muted">Modificado: {{ paquete.fecha_actualizacion|date:"Y-m-d" }}</small><br>
+                <small class="text-muted">Estado: 
+                    {% if paquete.estado_entrega == 'Enviado' %}
+                        <i class="fas fa-paper-plane"></i>
+                    {% elif paquete.estado_entrega == 'Asignado' %}
+                        <i class="fas fa-user-check"></i>
+                    {% else %}
+                        <!-- Puedes agregar un icono predeterminado para otros estados -->
+                        <i class="fas fa-question-circle"></i> <!-- Icono de interrogación como predeterminado -->
+                    {% endif %}
+                    {{ paquete.estado_entrega }}
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
