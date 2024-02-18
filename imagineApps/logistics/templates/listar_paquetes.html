@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+{% if usuarios %}
+<h1>Seleccione el transportista a consultar:</h1>
+<select id="selectUsuario">
+    {% for usuario in usuarios %}
+        <option value="{{ usuario.idTransportista }}" {% if usuario.idTransportista == usuario_seleccionado_id %}selected{% endif %}>
+            {{ usuario }}
+        </option>
+    {% endfor %}
+</select>
+{% endif %}
+    {% if paquetes %}
+    <div class="listContainer  shadow mt-3">
+        <div class="row">
+            {% for paquete in paquetes %}
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1"><strong>{{ paquete.nombre }}</strong></h5>
+                            <p class="card-text mb-1"><strong><i class="fas fa-map-marker-alt"></i> Dirección Origen: </strong>{{paquete.direccion_origen}}</p>
+                            <p class="card-text mb-1"><strong><i class="fas fa-map-marker-alt"></i> Dirección Destino:</strong> {{paquete.direccion_destino}}</p>
+                            <p class="card-text mb-1"><strong><i class="fas fa-ruler"></i> Dimensiones:</strong> {{paquete.dimensiones}}</p>
+                            <p class="card-text mb-1"><strong><i class="fas fa-weight"></i> Peso:</strong> {{paquete.peso}}</p>
+                            <div>
+                                <small class="text-muted">Creado: {{ paquete.fecha_creacion|date:"Y-m-d" }}</small><br>
+                                <small class="text-muted">Modificado: {{ paquete.fecha_actualizacion|date:"Y-m-d" }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Mostrar paginación -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if paquetes.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ paquetes.previous_page_number }}">previous</a>
+            {% endif %}
+            {% if paquetes.has_previous or paquetes.has_next %}
+                <span class="current">
+                    Página {{ paquetes.number }} de {{ paquetes.paginator.num_pages }}
+                </span>
+            {% endif %}                            
+            {% if paquetes.has_next %}
+                <a href="?page={{ paquetes.next_page_number }}">next</a>
+                <a href="?page={{ paquetes.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% else %}
+    <p class="mt-3">No tienes paquetes aún.</p>
+{% endif %}
+    {% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var selectUsuario = document.getElementById("selectUsuario");
+    
+        selectUsuario.addEventListener("change", function() {
+            var usuarioIdSeleccionado = selectUsuario.value; // ID del usuario
+            // Redireccionar a la URL para obtener los paquetes del transportista seleccionado
+            window.location.href = '/obtener_paquetes/' + usuarioIdSeleccionado;
+        });
+    });
+</script>
+{% endblock scripts %}
+{% endblock content%}
