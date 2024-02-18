@@ -27,16 +27,7 @@ class CustomUserCreationForm(UserCreationForm):
             widget=forms.TextInput(attrs={'type': 'submit', 'class': 'btn btn-outline-warning', 'value': 'Registrar'})
         )
         
-class PaqueteForm(forms.ModelForm):
-    cliente = forms.ModelChoiceField(
-        queryset=Cliente.objects.all(),
-        widget=ModelSelect2Widget(
-            model=Cliente,
-            search_fields=['nombre__icontains'],
-            attrs={'style': 'width: 100%;'}
-        )
-    )
-
+class PaqueteForm(forms.ModelForm):  
     class Meta:
         model = Paquete
-        fields = ['cliente','peso', 'dimensiones', 'direccion_origen', 'direccion_destino']
+        fields = ['peso', 'dimensiones', 'direccion_origen', 'direccion_destino']
