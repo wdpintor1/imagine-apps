@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import Paquete, Transportista, Cliente
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import F
 
 def home(request):    
     return render(request, 'home.html')
@@ -34,16 +35,20 @@ def asignar_paquete_transportista(request):
     
 def listar_paquete(request):
     operacion = request.GET.get('operacion')
-    print(operacion)
     if(operacion=="transportista"):        
         usuarios=Transportista.objects.all(); 
     else:
         usuarios=Cliente.objects.all(); 
         
-    return render(request,'listar_paquetes.html',{'usuarios':usuarios})
+    return render(request,'listar_paquetes.html',{'usuarios':usuarios,'operacion':operacion})
 
 def obtener_paquetes(request,id_usuario=None):
-    print(id_usuario)
-    transportistas=Transportista.objects.all(); 
+    operacion = request.GET.get('operacion')
+    print(operacion)
+    if(operacion=="transportista"):
+        usuarios = Transportista.objects.all()
+    else:
+        usuarios = Cliente.objects.all()
+    print(usuarios)
     paquetes=Paquete.objects.filter(idTransportista=id_usuario); 
-    return render(request,'listar_paquetes.html',{'usuario_seleccionado_id':id_usuario,'paquetes':paquetes,'usuarios':transportistas})
+    return render(request,'listar_paquetes.html',{'usuario_seleccionado_id':id_usuario,'paquetes':paquetes,'usuarios':usuarios,'operacion':operacion})

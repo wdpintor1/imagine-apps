@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 {% if usuarios %}
-<h1>Seleccione el transportista a consultar:</h1>
+<h1>Seleccione el {{operacion}} a consultar:</h1>
 <select id="selectUsuario">
     {% for usuario in usuarios %}
+    {% if operacion == "transportista" %}
         <option value="{{ usuario.idTransportista }}" {% if usuario.idTransportista == usuario_seleccionado_id %}selected{% endif %}>
             {{ usuario }}
         </option>
-    {% endfor %}
+    {% else %}
+        <option value="{{ usuario.idCliente }}" {% if usuario.idCliente == usuario_seleccionado_id %}selected{% endif %}>
+            {{ usuario }}
+        </option>
+    {% endif %}
+{% endfor %}
 </select>
 {% endif %}
     {% if paquetes %}
     <div class="listContainer  shadow mt-3">
+       
         <div class="row">
             {% for paquete in paquetes %}
                 <div class="col-md-6 mb-3">
@@ -57,11 +64,10 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var selectUsuario = document.getElementById("selectUsuario");
-    
         selectUsuario.addEventListener("change", function() {
             var usuarioIdSeleccionado = selectUsuario.value; // ID del usuario
-            // Redireccionar a la URL para obtener los paquetes del transportista seleccionado
-            window.location.href = '/obtener_paquetes/' + usuarioIdSeleccionado;
+            // Redireccionar a la URL para obtener los paquetes del usuario seleccionado
+            window.location.href = '/obtener_paquetes/' + usuarioIdSeleccionado+'?operacion={{operacion}}';
         });
     });
 </script>
