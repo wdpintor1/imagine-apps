@@ -47,10 +47,12 @@
                     <a class="nav-link" href="/paquetes/"><i class="fa fa-box"></i> Paquetes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/signout/"><i class="fas fa-paper-plane"></i> Enviados</a>
+                    <a class="nav-link" href="{% url 'listar_paquete'%}?operacion=cliente">
+                        <i class="fas fa-paper-plane"></i> Enviados
+                    </a>
                 </li>            
                 <li class="nav-item">
-                    <a class="nav-link" href="/signup/"><i class="fas fa-check-circle"></i> Asignados</a>
+                    <a class="nav-link" href="{% url 'listar_paquete'%}?operacion=transportista"><i class="fas fa-check-circle"></i> Asignados</a>
                 </li>
         </ul>
     </div>
