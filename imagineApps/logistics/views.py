@@ -43,7 +43,6 @@ def listar_paquete(request):
     return render(request,'listar_paquetes.html',{'usuarios':usuarios})
 
 def obtener_paquetes(request,id_usuario=None):
-    print(id_usuario)
     transportistas=Transportista.objects.all(); 
     paquetes=Paquete.objects.filter(idTransportista=id_usuario); 
     return render(request,'listar_paquetes.html',{'usuario_seleccionado_id':id_usuario,'paquetes':paquetes,'usuarios':transportistas})
